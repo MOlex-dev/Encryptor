@@ -1,0 +1,144 @@
+﻿<!--
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |              ENCRYPTOR              |
+    |          Main Window Layout         |
+    |                                     |
+    |    Copyright (c) MOlex-dev, 2022    |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+-->
+
+<Window x:Class="Encryptor.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:Encryptor.ViewModel"
+        xmlns:local="clr-namespace:Encryptor"
+        mc:Ignorable="d"
+        
+        Title="Encryptor"
+        Background="WhiteSmoke"
+        Width="900" Height="550"
+        MinWidth="900" MinHeight="550"
+        WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <Style x:Key="MainTextBox" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Visible"/>
+        </Style>
+        <Style x:Key="Checkbox" TargetType="CheckBox">
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Margin" Value="0 5 0 0"/>
+        </Style>
+        <Style x:Key="Radiobutton" TargetType="RadioButton">
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Margin" Value="0 3 0 0"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <Menu Background="WhiteSmoke"
+                  DockPanel.Dock="Top">
+                <MenuItem Header="File"
+                          IsTabStop="False">
+                    <MenuItem Header="Open"
+                              IsTabStop="False"
+                              Command="{Binding OpenCommand}"/>
+                    <MenuItem Header="Export"
+                              IsTabStop="False"
+                              Command="{Binding ExportCommand}"/>
+                    <Separator/>
+                    <MenuItem Header="Exit"
+                              IsTabStop="False"
+                              Command="{Binding ExitCommand}"/>
+                </MenuItem>
+                
+                <MenuItem Header="Clean"
+                          IsTabStop="False"
+                          Command="{Binding CleanTextCommand}"/>
+                
+                <MenuItem Header="About"
+                          IsTabStop="False"
+                          Command="{Binding InfoCommand}"/>
+            </Menu>
+           
+            <Grid Margin="10 5 10 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Margin="0 0 5 0"
+                            Grid.Column="0">
+                    <GroupBox Header="Encryption">
+                        <ComboBox IsTabStop="False"
+                                  Height="25"
+                                  Margin="0 10 0 5"
+                                  ItemsSource="{Binding ListOfAlgorithms}"
+                                  SelectedIndex="{Binding SelectedIndex}"/>
+                    </GroupBox>
+                    
+                    <GroupBox Header="Preprocessing"
+                              Margin="0 10 0 0">
+                        <StackPanel Margin="0 5 0 0">
+                            <CheckBox Content="Remove whitespaces (' ')"
+                                      Style="{StaticResource Checkbox}"
+                                      IsChecked="{Binding RemoveWhitespaces}"/>
+                            <CheckBox Content="Remove punctuation ( . ( ) ; ! ?, etc.)" 
+                                      Style="{StaticResource Checkbox}"
+                                      IsChecked="{Binding RemovePunctuation}"/>
+                            <CheckBox Content="Remove symbols ( @ $ [ ] # __ ^ +, etc.)"
+                                      Style="{StaticResource Checkbox}"
+                                      IsChecked="{Binding RemoveSymbols}"/>
+
+                            <GroupBox Header="Change case"
+                                      Margin="0 10 0 0">
+                                <StackPanel Margin="0 3 0 5">
+                                    <RadioButton Content="Do not change"
+                                                 Style="{StaticResource Radiobutton}"
+                                                 IsChecked="{Binding CaseNotChange}"/>
+                                    <RadioButton Content="To lower"
+                                                 Style="{StaticResource Radiobutton}"
+                                                 IsChecked="{Binding CaseToLower}"/>
+                                    <RadioButton Content="To UPPER"
+                                                 Style="{StaticResource Radiobutton}"
+                                                 IsChecked="{Binding CaseToUpper}"/>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </GroupBox>
+                    
+                    <Button Content="START"
+                            FontSize="30" FontWeight="Bold"
+                            Height="70"
+                            Background="WhiteSmoke"
+                            TabIndex="1"
+                            Margin="5 15 5 0"
+                            Command="{Binding StartCommand}"/>
+                </StackPanel>
+                
+                <UniformGrid Rows="2"
+                             Margin="5 0 0 0"
+                             Grid.Column="1">
+                    <GroupBox Header="Default text"
+                              Margin="0 0 0 5">
+                        <TextBox Text="{Binding DefaultText}"
+                                 Style="{StaticResource MainTextBox}"
+                                 TabIndex="0"/>
+                    </GroupBox>
+                    
+                    <GroupBox Header="Processed text"
+                              Margin="0 5 0 0">
+                        <TextBox Text="{Binding ProcessedText}"
+                                 Style="{StaticResource MainTextBox}"
+                                 IsTabStop="False"
+                                 IsReadOnly="True"/>
+                    </GroupBox>
+                </UniformGrid>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
