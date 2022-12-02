@@ -31,12 +31,19 @@ public class RelayCommand : ICommand
         _execute = execute;
         _canExecute = canExecute;
     }
-
+    
+    /// <summary>
+    /// Can command be executed?
+    /// </summary>
     public bool CanExecute(object? parameter)
     {
         return _canExecute == null || _canExecute(parameter);
     }
 
+    /// <summary>
+    /// Execute action
+    /// </summary>
+    /// <param name="parameter">Parameters for execution</param>
     public void Execute(object? parameter)
     {
         _execute(parameter);

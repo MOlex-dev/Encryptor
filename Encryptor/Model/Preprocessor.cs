@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ *    |              ENCRYPTOR              |
+ *    |          Preprocessor Class         |
+ *    |                                     |
+ *    |    Copyright (c) MOlex-dev, 2022    |
+ *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 

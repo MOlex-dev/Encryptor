@@ -7,10 +7,6 @@
  *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
  */
 
-using System.Windows;
-using Encryptor.View;
-using Encryptor.ViewModel;
-
 namespace Encryptor.Application;
 
 /// <summary>

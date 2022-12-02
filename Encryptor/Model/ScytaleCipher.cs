@@ -1,8 +1,20 @@
-﻿using System.Collections.Generic;
+﻿/*
+ *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ *    |              ENCRYPTOR              |
+ *    |           Scytale Cipher            |
+ *    |                                     |
+ *    |    Copyright (c) MOlex-dev, 2022    |
+ *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ */
+
+using System.Collections.Generic;
 using System.Text;
 
 namespace Encryptor.Model;
 
+/// <summary>
+/// Class <c>ScytaleCipher</c> provides configurable Scytale Cipher algorithm
+/// </summary>
 public class ScytaleCipher : EncryptionAlgorithm
 {
     private readonly int _scytaleSides;

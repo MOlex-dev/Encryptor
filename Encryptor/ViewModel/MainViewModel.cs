@@ -47,7 +47,6 @@ public class MainViewModel : INotifyPropertyChanged
     private readonly string _appVersion;
     
     
-    
     public MainViewModel(Window window)
     {
         _window = window;
@@ -62,7 +61,6 @@ public class MainViewModel : INotifyPropertyChanged
         // Algorithms
         ListOfAlgorithms = new ObservableCollection<string>()
             { "Caesar Cipher (shift 1)", "Caesar Cipher (progressive)", "Scytale Cipher (6 sides)" };
-
         SelectedIndex = 0;
         OnPropertyChanged(nameof(SelectedIndex));
     }
@@ -71,7 +69,8 @@ public class MainViewModel : INotifyPropertyChanged
     private void OnPropertyChanged([CallerMemberName]string prop = "") =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 
-
+    // MainWindow
+    
     /// <summary>
     /// Collection of encryption algorithms names
     /// </summary>
@@ -97,8 +96,7 @@ public class MainViewModel : INotifyPropertyChanged
             OnPropertyChanged(nameof(SelectedIndex));
         }
     }
-
-    // MainWindow
+    
     /// <summary>
     /// Command, representing Info button click
     /// </summary>
@@ -306,8 +304,7 @@ public class MainViewModel : INotifyPropertyChanged
         set { if (value == true) _preprocessorSettings.ChangeCase = Preprocessor.CaseChanging.ToUpper; }
     }
 
-
-
+    
     private void CloseApplication()
     {
         int exitCode = 0;
@@ -396,7 +393,6 @@ public class MainViewModel : INotifyPropertyChanged
         };
         
         if (openDialog.ShowDialog() != true) return string.Empty;
-
         
         try
         {
@@ -430,6 +426,7 @@ public class MainViewModel : INotifyPropertyChanged
     
     
     // InfoWindow
+
     /// <summary>
     /// String representation of assembly version in <c>Major.Minor</c> format
     /// </summary>

@@ -1,7 +1,19 @@
-﻿using System.Text;
+﻿/*
+ *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ *    |              ENCRYPTOR              |
+ *    |       Caesar Cipher Algorithm       |
+ *    |                                     |
+ *    |    Copyright (c) MOlex-dev, 2022    |
+ *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ */
+
+using System.Text;
 
 namespace Encryptor.Model;
 
+/// <summary>
+/// Class <c>CaesarCipher</c> provides configurable Caesar Cipher algorithm
+/// </summary>
 public class CaesarCipher : EncryptionAlgorithm
 {
     private int _shift;
